@@ -10,7 +10,7 @@ As stated in the LICENSE file (GPL), you are free to fork the code for any use, 
 There should be no need to modify the bot's framework for most commands. Generally, you should be able to maintain the bot without ever once making a change to the framework itself.
 
 ### Module Setup
-Before we can even get to screwing with the config settings, you need to setup your npm modules. Please refer to the [discord.js docs](https://discord.js.org/#/docs/main/stable/general/welcome). You absolutely need to install `discord.js`, though I personally installed `erlpack` and `uws`. If you intend to use voice, you must install either `node-opus` or `opusscript`. 
+Before we can even get to screwing with the config settings, you need to setup your npm modules. Please refer to the [discord.js docs](https://discord.js.org/#/docs/main/stable/general/welcome). You absolutely need to install `discord.js`, though I personally also installed `erlpack` and `uws`. If you intend to use voice, you must install either `node-opus` or `opusscript`. 
 
 Note: I have not tested voice in any way, shape, or form whatsoever. It may not work at all. I can not point in either way.
 
