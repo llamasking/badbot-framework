@@ -3,8 +3,14 @@
 ## About
 BadBot Framework is a simple bare framework for Discord bots which I use in [BadBoi Bot](https://github.com/llamasking/BadBoi-Bot) and in [TwitblendBot for Discord](https://github.com/llamasking/TwitblendBot-Discord). It's designed to be modular and relatively easy to develop for. 
 
-## Build A Bot 
-As stated in the LICENSE file (GPL), you are free to fork the code for any use, commercial or not. I'd greatly appreciate if you used the credits module with my name in it somewhere, but it's in no way necessary. 
+## Build A Bot
+
+### Legal Things Before We Begin
+As stated in the LICENSE file (GPL), you are free to fork the code for any use, commercial or not. Just remember you must credit me. I included a barebones credits command for you,  which you are free to edit to your liking or just disable/delete. I don't care how you credit me, as long as you do and it's easily accessible to someone using the bot.
+
+Secondly, GPL requires you release the source code of your bot along with a copy of the LICENSE file. The license must be GPLv2 or some other compatible license. 
+
+Finally, GPL requires that you "state changes". Now what exactly that means is foreign to me. IANAL, but my understanding is that you must say what's different between your code and mine. That's simple. Your code is a very usable Discord bot and mine is nothing more than a bare bones framework. If someone asks, you've "Added basically all functionality to a bare bones framework."
 
 ### Introduction:
 There should be no need to modify the bot's framework for most commands. Generally, you should be able to maintain the bot without ever once making a change to the framework itself.
