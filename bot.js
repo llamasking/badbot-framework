@@ -26,10 +26,13 @@ for(i=0; i<mods.length; i++) {
 // Loadmod function
 function loadmod (command, args, message) {
   // Ignore disabled modules
-  if (activated[command] == undefined || false) return;
+  if (!activated[command]) {
+    log(`${config.prefix}${command} is disabled.`);
+    return;
+  };
 
   x=require(`./modules/${command}.js`);
-  x(message, args)
+  x(message, args);
 }
 
 // Overall hash of everything
@@ -46,8 +49,8 @@ client.on("ready", () => {
   client.user.setActivity(config.activity);
 });
 
-client.on("guildCreate", guild => {log(`Joined new server: ${guild.name} with ${guild.memberCount} members.`)});
-client.on("guildDelete", guild => {log(`Left server: ${guild.name} with ${guild.memberCount} members.`)});
+client.on("guildCreate", guild => log(`Joined new server: ${guild.name} with ${guild.memberCount} members.`));
+client.on("guildDelete", guild => log(`Left server: ${guild.name} with ${guild.memberCount} members.`));
 
 client.on("message", async message => {
   // Cut out bots and group chats/dms.
@@ -72,6 +75,7 @@ client.on("message", async message => {
         execcmd(message);
       } else {
         // OwnerID does not match message author.
+        return;
       }
       break;
     }
