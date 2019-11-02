@@ -1,6 +1,6 @@
 {
-  "token"  : "<Token>",
-  "prefix" : "!!",
-  "activity" : "<Activity>",
-  "ownerID" : "<Your Discord ID>"
+  "token": "<Token>",
+  "prefix": "!!",
+  "activity": "<Activity>",
+  "ownerID": "<Your Discord ID>"
 }
