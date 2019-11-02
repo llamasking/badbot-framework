@@ -1,0 +1,16 @@
+{
+    "name": "badbot-framework",
+    "description": "A basic framework for Discord bots.",
+    "version": "1.0.0",
+    "author": {
+        "name": "llamasking",
+        "url": "https://github.com/llamasking"
+    },
+    "license": "GPL-3.0",
+    "homepage": "https://github.com/llamasking/badbot-framework",
+    "repository": "github:llamasking/badbot-framework",
+    "main": "bot.js",
+    "dependencies": {
+        "discord.js": "^11.5.1"
+    }
+}
