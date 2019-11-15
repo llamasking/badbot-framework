@@ -12,7 +12,7 @@ Secondly, GPL requires you release the source code of your bot along with a copy
 
 Finally, GPL requires that you "state changes". Now what exactly that means is foreign to me. IANAL, but my understanding is that you must say what's different between your code and mine. That's simple. Your code is a very usable Discord bot and mine is nothing more than a bare bones framework. If someone asks, you've "Added basically all functionality to a bare bones framework."
 
-### Introduction:
+### Introduction
 There should be no need to modify the bot's framework for most commands. Generally, you should be able to maintain the bot without ever once making a change to the framework itself.
 
 ### Module Setup
@@ -20,14 +20,14 @@ Before we can even get to screwing with the config settings, you need to setup y
 
 Note: I have not tested voice in any way, shape, or form whatsoever. It may not work at all. I can not point in either way.
 
-### Configuration:
+### Configuration
 Before starting the bot, you must copy or rename the `config.example.json` to `config.json`. Then, you simply fill it out.
 
     * Activity is the game the bot is 'playing'. 
 
     * OwnerID should not be in quotes, though all other config options should.
     
-### Write a module.
+### Write a module
 A module is called by typing <Prefix><Module>. For instance, `!!help` will run the `help.js` module. You can not have `!!helpme` run the `help.js` module unless you link `helpme.js` to `help.js` or copy it. 
 
 I highly recommend making a copy of `example.js` when beginning to write a module. You should probably fill out the comments up top to make sure anyone else reading your code knows exactly what everything does. When a module is called, the module is fed the message class and the `args` variable. 

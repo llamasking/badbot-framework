@@ -70,12 +70,10 @@ client.on("message", async message => {
     // ONLY FOR USE WITH COMMANDS THAT DO NOT PLAY WELL AS A MODULE
 
     case "exec": {
-      if (message.author.id == config.ownerID) {
-        execcmd(message);
-      } else {
-        // OwnerID does not match message author.
-        return;
-      }
+      // Checks if the message author is the owner.
+      // If not, ignore it.
+      if (message.author.id == config.ownerID) execcmd(message);
+
       break;
     }
 
