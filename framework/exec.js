@@ -14,6 +14,6 @@ module.exports = (message) => {
             console.error(err);
         } else {
             message.reply(`\`\`\`${stdout}\`\`\``);
-        };
+        }
     });
 };

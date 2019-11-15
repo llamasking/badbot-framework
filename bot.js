@@ -16,9 +16,9 @@ const log = require('./framework/logging.js');
 log('Bot starting up!')
 
 // Detect modules
-modhash = [];
+var modhash = [];
 const mods = fs.readdirSync('./modules', 'utf-8');
-for (i = 0; i < mods.length; i++) {
+for (var i = 0; i < mods.length; i++) {
   modhash[i] = hashthis(fs.readFileSync('./modules/' + mods[i]));
   log(`Detected Module: ${mods[i]} - Hash: ${modhash[i]} - Activated: ${activated[mods[i].replace('.js', '')]}`);
 }
@@ -29,10 +29,9 @@ function loadmod(command, args, message) {
   if (!activated[command]) {
     log(`${config.prefix}${command} is disabled.`);
     return;
-  };
+  }
 
-  x = require(`./modules/${command}.js`);
-  x(message, args);
+  require(`./modules/${command}.js`)(message, args);
 }
 
 // Overall hash of everything
