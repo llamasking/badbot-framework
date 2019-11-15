@@ -72,7 +72,7 @@ client.on("message", async message => {
     case "exec": {
       // Checks if the message author is the owner.
       // If not, ignore it.
-      if (message.author.id == config.ownerID) execcmd(message);
+      if (message.author.id === config.ownerID) execcmd(message);
 
       break;
     }
