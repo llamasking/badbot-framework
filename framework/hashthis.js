@@ -4,8 +4,8 @@
 */
 
 module.exports = (data, algorithm) => {
-    const crypto = require("crypto");
+    const crypto = require('crypto');
 
-    if (!algorithm) algorithm = "md5";
+    if (!algorithm) algorithm = 'md5';
     return crypto.createHash(algorithm).update(data, 'utf8').digest('hex').toLocaleUpperCase();
-}
+};

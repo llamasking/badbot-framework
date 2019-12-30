@@ -14,6 +14,10 @@ module.exports = {
     },
     "rules": {
         "curly": "off",
-        "single": "off"
+        "single": "off",
+        "quotes": [1, "single", { "avoidEscape": true }],
+        "no-console": "off",
+        "semi": "warn",
+        "eqeqeq": "warn"
     }
 };
