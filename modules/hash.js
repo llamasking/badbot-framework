@@ -12,7 +12,7 @@ const hashthis = require('../framework/hashthis.js');
 // Detect modules
 var modhash = [];
 const mods = fs.readdirSync('./modules', 'utf-8');
-for (var i = mods.length; i--;) {
+for (var i = 0; i < mods.length; i++) {
   modhash[i] = hashthis(fs.readFileSync('./modules/' + mods[i]));
 }
 

@@ -45,10 +45,10 @@ client.on('ready', () => {
   client.user.setActivity(config.activity.name, { url: config.activity.url, type: config.activity.type });
 });
 
-client.on('guildCreate', guild => log(`Joined new server: ${guild.name} with ${guild.memberCount} members.`));
-client.on('guildDelete', guild => log(`Left server: ${guild.name} with ${guild.memberCount} members.`));
+client.on('guildCreate', (guild) => log(`Joined new server: ${guild.name} with ${guild.memberCount} members.`));
+client.on('guildDelete', (guild) => log(`Left server: ${guild.name} with ${guild.memberCount} members.`));
 
-client.on('message', async message => {
+client.on('message', async (message) => {
   // Cut out bots and group chats/dms.
   if (message.author.bot) return;
   if (message.guild === null) return;
@@ -66,26 +66,26 @@ client.on('message', async message => {
   switch (cmd) {
     // ONLY FOR USE WITH COMMANDS THAT DO NOT PLAY WELL AS A MODULE
 
-    case 'exec': {
+    case 'exec':
       // Checks if the message author is the owner.
       // If not, ignore it.
       if (message.author.id === config.ownerID) execcmd(message);
 
       break;
-    }
 
-    case 'ping': {
+
+    case 'ping':
       // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
       // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
       const m = await message.channel.send('Testing ping!');
       m.edit(`Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
       break;
-    }
+
 
     // Load from module if command plays well in a module
-    default: {
+    default:
       loadmod(cmd, args, message);
-    }
+
   }
 
   // Logging <READ THE TERMS ON THE GITHUB REPO FOR MORE INFO>
