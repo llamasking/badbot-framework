@@ -23,20 +23,12 @@ for (var i = 0; i < mods.length; i++) {
   log(`Detected Module: ${mods[i]} - Hash: ${modhash[i]} - Activated: ${activated[mods[i].replace('.js', '')]}`);
 }
 
-// Loadmod function
-function loadmod(command, args, message) {
-  // Ignore disabled modules
-  if (!activated[command]) return;
-
-  require(`./modules/${command}.js`)(message, args);
-}
-
 // Overall hash of everything
 const botjshash = hashthis(fs.readFileSync('./bot.js'));
 const totalhash = hashthis(modhash.toString() + botjshash);
 
 client.on('ready', () => {
-  console.log(`
+  log(`\n
     Logged in as ${client.user.username}.
     Bot.js hash: ${botjshash}
     Total hash: ${totalhash}
@@ -54,7 +46,10 @@ client.on('message', async (message) => {
   if (message.guild === null) return;
 
   // @Bot *help* and @Bot *commands*
-  if (message.isMentioned(client.user.id) && message.content.includes('help' || 'commands')) loadmod('help');
+  if (message.isMentioned(client.user.id) && message.content.includes('help' || 'commands')) {
+    require('./modules/help.js')(message, args);
+    return;
+  }
 
   // Cut out commands not starting with prefix.
   if (!message.content.startsWith(config.prefix)) return;
@@ -66,26 +61,29 @@ client.on('message', async (message) => {
   switch (cmd) {
     // ONLY FOR USE WITH COMMANDS THAT DO NOT PLAY WELL AS A MODULE
 
-    case 'exec':
+    case 'exec': {
       // Checks if the message author is the owner.
       // If not, ignore it.
       if (message.author.id === config.ownerID) execcmd(message);
-
       break;
+    }
 
 
-    case 'ping':
+    case 'ping': {
       // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
       // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
+      // eslint-disable-next-line no-case-declarations
       const m = await message.channel.send('Testing ping!');
       m.edit(`Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
       break;
-
+    }
 
     // Load from module if command plays well in a module
-    default:
-      loadmod(cmd, args, message);
-
+    default: {
+      // Ignore disabled modules
+      if (!activated[cmd]) return;
+      require(`./modules/${cmd}.js`)(message, args);
+    }
   }
 
   // Logging <READ THE TERMS ON THE GITHUB REPO FOR MORE INFO>
