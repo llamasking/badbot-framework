@@ -1,7 +1,6 @@
 # BadBot Framework
 
-## About
-BadBot Framework is a simple bare framework for Discord bots which I use in [BadBoi Bot](https://github.com/llamasking/BadBoi-Bot) and in [TwitblendBot for Discord](https://github.com/llamasking/TwitblendBot-Discord). It's designed to be modular and relatively easy to develop for. 
+A simple, bare framework for Discord bots which is used in all my bots. It's designed to be modular and relatively easy to develop for. 
 
 ## Build A Bot
 
@@ -16,9 +15,12 @@ Note: I have not tested voice in any way, shape, or form whatsoever. It may not 
 ### Configuration
 Before starting the bot, you must copy or rename the `config.example.json` to `config.json`. Then, you simply fill it out.
 
-    * Activity is the game the bot is 'playing'. 
+    * Activity: 
+      * Name: What the bot is playing, streaming, watching, or listening to. 
+      * URL: The twitch.tv stream url. Remove this line if not used.
+      * Type: The activity type. Rather self-explanatory.
 
-    * OwnerID should not be in quotes, though all other config options should.
+    * OwnerID should an integer (not be in quotes).
     
 ### Write a module
 A module is called by typing <Prefix><Module>. For instance, `!!help` will run the `help.js` module. You can not have `!!helpme` run the `help.js` module unless you link `helpme.js` to `help.js` or copy it. 
