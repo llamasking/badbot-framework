@@ -20,7 +20,7 @@ Before starting the bot, you must copy or rename the `config.example.json` to `c
       * URL: The twitch.tv stream url. Remove this line if not used.
       * Type: The activity type. Rather self-explanatory.
 
-    * OwnerID should an integer (not be in quotes).
+    * OwnerID must be an integer (not be in quotes).
     
 ### Write a module
 A module is called by typing <Prefix><Module>. For instance, `!!help` will run the `help.js` module. You can not have `!!helpme` run the `help.js` module unless you link `helpme.js` to `help.js` or copy it. 
