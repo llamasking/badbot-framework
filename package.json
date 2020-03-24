@@ -11,7 +11,7 @@
     "repository": "github:llamasking/badbot-framework",
     "main": "bot.js",
     "dependencies": {
-        "discord.js": "^11.5.1"
+        "discord.js": "^12.0.2"
     },
     "devDependencies": {
         "eslint": "^6.6.0"
