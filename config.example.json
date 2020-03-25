@@ -1,10 +1,11 @@
 {
-  "token": "<Token>",
+  "token": "Token",
   "prefix": "!!",
   "activity": {
     "name": "Example Name",
     "url": "Twitch.tv URL",
     "type": "Pick one: PLAYING, STREAMING, LISTENING, WATCHING"
   },
-  "ownerID": "<Your Discord ID>"
+  "status": "Pick one: online, idle, invisible, dnd",
+  "ownerID": "YourDiscordID"
 }
