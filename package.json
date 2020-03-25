@@ -11,7 +11,11 @@
     "repository": "github:llamasking/badbot-framework",
     "main": "bot.js",
     "dependencies": {
-        "discord.js": "^12.0.2"
+        "bufferutil": "^4.0.1",
+        "discord.js": "^12.0.2",
+        "erlpack": "github:discordapp/erlpack",
+        "utf-8-validate": "^5.0.2",
+        "zlib-sync": "^0.1.6"
     },
     "devDependencies": {
         "eslint": "^6.6.0"
