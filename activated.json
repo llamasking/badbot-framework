@@ -1,5 +1,9 @@
 {
     "example": false,
+
     "credits": true,
-    "hash": true
+    "hash": true,
+
+    "help": true,
+    "commands": true
 }

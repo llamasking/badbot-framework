@@ -1,25 +1,34 @@
 /*
-// Command: Hash
-// Description: Verifying the bot is runnign the most updated version through a command.
-*/
+ * Command: Hash
+ * Description: Useful for verifying what version of the code the bot is running.
+ * 
+ * This is pretty much a direct rip from the startup of bot.js with some additions on it.
+ */
 
-// Except for one dir change, this is the exact same as the hashing in bot.js.
-
-// Load framework
+ // Load some things needed
 const fs = require('fs');
 const hashthis = require('../framework/hashthis.js');
+const activated = require('../activated.json');
 
-// Detect modules
-var modhash = [];
+var responseText ='';
+
+// Get the hash of all the modules
+var modhashes = [];
 const mods = fs.readdirSync('./modules', 'utf-8');
-for (var i = 0; i < mods.length; i++) {
-  modhash[i] = hashthis(fs.readFileSync('./modules/' + mods[i]));
-}
+mods.forEach(mod => {
+  var i = modhashes.push(hashthis(fs.readFileSync('./modules/' + mod)));
+  responseText += `Module: ${mod} - Hash: ${modhashes[i -1]} - Activated: ${activated[mod.slice(0, -3)]}\n`;
+});
 
-// Overall hash of everything
+// Toss it all in a pot and get the has of that pot.
 const botjshash = hashthis(fs.readFileSync('./bot.js'));
-const totalhash = hashthis(modhash.toString() + botjshash);
+const totalhash = hashthis(modhashes.toString() + botjshash);
+
+responseText += `
+Bot.js Hash: ${botjshash}
+Total Hash: ${totalhash}
+`;
 
 module.exports = (message) => {
-  message.channel.send(`\`\`Bot.js Hash: ${botjshash}\nTotal Hash: ${totalhash}\`\``);
+  message.channel.send(responseText, { code: true });
 };
