@@ -12,22 +12,17 @@ const activated = require('./activated.json');
 
 // List detected modules at bot startup
 var modhashes = [];
-const mods = fs.readdirSync('./modules', 'utf-8');
-mods.forEach(mod => {
-  var i = modhashes.push(hashthis(fs.readFileSync('./modules/' + mod)));
-  console.log(`Detected Module: ${mod} - Hash: ${modhashes[i -1]} - Activated: ${activated[mod.slice(0, -3)]}`);
+fs.readdirSync('./modules', 'utf-8').forEach(mod => {
+  modhashes.push(hashthis(fs.readFileSync('./modules/' + mod)));
+  console.log(`Detected Module: ${mod} - Hash: ${modhashes[modhashes.length - 1]} - Activated: ${activated[mod.slice(0, -3)]}`);
 });
-
-// Overall hash of everything
-const botjshash = hashthis(fs.readFileSync('./bot.js'));
-const totalhash = hashthis(modhashes.toString() + botjshash);
 
 // When bot is ready to recieve commands, log details about bot.
 client.on('ready', () => {
   console.log(`
     Logged in as ${client.user.tag}.
-    Bot.js hash: ${botjshash}
-    Total hash: ${totalhash}
+    Bot.js hash: ${hashthis(fs.readFileSync('./bot.js'))}
+    Total hash: ${hashthis(modhashes.toString() + hashthis(fs.readFileSync('./bot.js')))}
     Time: ${new Date()}\n`);
 
   client.user.setPresence(config.presence);

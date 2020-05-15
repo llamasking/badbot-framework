@@ -1,7 +1,7 @@
 /*
  * Command: Hash
- * Description: Useful for verifying what version of the code the bot is running.
- * 
+ * Description: Useful for verifying if a remote server, such as heroku, is running an updated version of your bot.
+ *
  * This is pretty much a direct rip from the startup of bot.js with some additions on it.
  */
 
@@ -9,26 +9,28 @@
 const fs = require('fs');
 const hashthis = require('../framework/hashthis.js');
 const activated = require('../activated.json');
+const Discord = require('discord.js');
 
-var responseText ='';
+// Set up the embed
+var embed = new Discord.MessageEmbed()
+  .setTitle('Hashes:')
+  .setColor('#7289DA');
 
 // Get the hash of all the modules
 var modhashes = [];
-const mods = fs.readdirSync('./modules', 'utf-8');
-mods.forEach(mod => {
-  var i = modhashes.push(hashthis(fs.readFileSync('./modules/' + mod)));
-  responseText += `Module: ${mod} - Hash: ${modhashes[i -1]} - Activated: ${activated[mod.slice(0, -3)]}\n`;
+fs.readdirSync('./modules', 'utf-8').forEach(mod => {
+  // Adds the hash of the module to the modhashes array
+  modhashes.push(hashthis(fs.readFileSync('./modules/' + mod)));
+
+  // Adds the module, if it's activated, and it's hash to the embed
+  embed.addField(mod + ` [${activated[mod.slice(0, -3)]}]`, modhashes[modhashes.length - 1]);
 });
 
-// Toss it all in a pot and get the has of that pot.
-const botjshash = hashthis(fs.readFileSync('./bot.js'));
-const totalhash = hashthis(modhashes.toString() + botjshash);
-
-responseText += `
-Bot.js Hash: ${botjshash}
-Total Hash: ${totalhash}
-`;
+// Add embed fields for bot.js and the total hash of all hashes
+embed.addField('Bot.js Hash', hashthis(fs.readFileSync('./bot.js')));
+embed.addField('Total Hash', hashthis(modhashes.toString() + hashthis(fs.readFileSync('./bot.js'))));
 
 module.exports = (message) => {
-  message.channel.send(responseText, { code: true });
+  // Send the embed
+  message.channel.send(embed);
 };
