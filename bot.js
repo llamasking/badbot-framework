@@ -38,7 +38,7 @@ client.on('message', async (message) => {
 
   // @Bot *help* and @Bot *commands*
   if (message.mentions.has(client.user) && message.content.includes('help' || 'commands')) {
-    require('./modules/help.js')(message, args);
+    require('./modules/help.js')(message);
     return;
   }
 
