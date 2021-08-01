@@ -6,7 +6,7 @@ A simple Discord bot framework which I use in all my bots. It's designed to be m
 
 ### Setup
 
-Before we can get started, we need to setup your npm pakages. Simply run `npm install -i` to install all packages I use and recommend.
+Before we can get started, we need to setup your npm pakages. Simply run `npm install -i` to install everything you'll need for a basic, text-only bot.
 
 If you intend on adding voice functionality to the bot, additionally run `npm install @discordjs/opus sodium`.
 
@@ -14,12 +14,10 @@ Note: I have not tested voice in any way, shape, or form. While I see no reason 
 
 ### Configuration
 
-Now, copy or rename "config.example.json" to "config.json" and fill it out.
+Rename .env.example to .env and fill out as specified.
 
-### Adding a command
+### Creating a command
 
-To add a command, simply make a copy of "example.js" in the "modules" folder and name it the same as the command you want to create. For instance, sending "!!test" will run "test.js".
+To add a command, simply make a copy of the `modules/example.ts` and name it the same as the command you want to create. For instance, a file named `test.ts` will be triggered by `!!test`.
 
-The framework passes through the full message variable to the module. Read more on the [discord.js docs](https://discord.js.org/#/docs/main/stable/class/Message).
-
-The framework also parses the command's arguments into an array as the "args" variable. For instance, with the command "!!testing 1 2 3", the args variable will be `["1", "2", "3"]`.
+You're expected to have a basic understanding of what you're doing before writing a module. Documentation is your friend.

@@ -1,23 +1,51 @@
 {
-    "name": "badbot-framework",
-    "description": "A basic framework for Discord bots.",
-    "version": "1.1.0",
-    "author": {
-        "name": "llamasking",
-        "url": "https://github.com/llamasking"
-    },
-    "license": "GPL-3.0",
-    "homepage": "https://github.com/llamasking/badbot-framework",
-    "repository": "github:llamasking/badbot-framework",
-    "main": "bot.js",
-    "dependencies": {
-        "bufferutil": "^4.0.1",
-        "discord.js": "^12.2.0",
-        "erlpack": "github:discordapp/erlpack",
-        "utf-8-validate": "^5.0.2",
-        "zlib-sync": "^0.1.7"
-    },
-    "devDependencies": {
-        "eslint": "^7.3.1"
-    }
+  "name": "badbot-framework",
+  "version": "2.0.0",
+  "description": "A basic framework for Discord bots.",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "npm run clean && tsc --project tsconfig.build.json",
+    "clean": "rimraf dist",
+    "start": "ts-node ./src/index.ts",
+    "start:dev": "nodemon",
+    "start:prod": "node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/llamasking/badbot-framework.git"
+  },
+  "author": {
+    "name": "llamasking",
+    "url": "https://github.com/llamasking"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/llamasking/badbot-framework/issues"
+  },
+  "homepage": "https://github.com/llamasking/badbot-framework#readme",
+  "devDependencies": {
+    "@types/node": "^16.4.7",
+    "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "@typescript-eslint/parser": "^4.28.5",
+    "eslint": "^7.31.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.2",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "bufferutil": "^4.0.3",
+    "discord.js": "^12.5.3",
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.12",
+    "utf-8-validate": "^5.0.5",
+    "zlib-sync": "^0.1.7"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "dist/*"
+    ]
+  }
 }
